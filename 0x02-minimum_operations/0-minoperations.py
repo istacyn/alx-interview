@@ -16,13 +16,13 @@ def minOperations(n):
     while current_chars < n:
         remaining_chars = n - current_chars
 
-    if (remaining_chars % current_chars == 0):
-        start = current_chars
-        current_chars += start
-        operations += 2
+        if (remaining_chars % current_chars == 0):
+            start = current_chars
+            current_chars += start
+            operations += 2
 
-    else:
-        current_chars += start
-        operations += 1
+        else:
+            current_chars += start
+            operations += 1
 
     return operations
