@@ -18,15 +18,17 @@ def makeChange(coins, total):
     - int: Fewest number of coins needed to meet the total amount.
            or -1 if total cannot be met by any combination of available coins.
     """
-    if total == 0:
+    if total <= 0:
         return 0
 
-    arr = [float("inf")] * (total + 1)
-
-    arr[0] = 0
-
-    for coin in coins:
-        for value in range(coin, total + 1):
-            arr[value] = min(arr[value], arr[value - coin] + 1)
-
-    return arr[total] if arr[total] != float("inf") else -1
+    else:
+        coin = sorted(coins)
+        coin.reverse()
+        counter = 0
+        for c in coin:
+            while(total >= c):
+                counter += 1
+                total -= 1
+        if total == 0:
+            return counter
+        return -1
