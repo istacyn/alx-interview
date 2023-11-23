@@ -21,14 +21,15 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    else:
-        coin = sorted(coins)
-        coin.reverse()
-        counter = 0
-        for c in coin:
-            while(total >= c):
-                counter += 1
-                total -= 1
-        if total == 0:
-            return counter
-        return -1
+    coins.sort()
+
+    arr = [float('inf')] * (total + 1)
+    arr[0] = 0
+
+    for coin in coins:
+        for i in range(coin, total + 1):
+            if coin > i:
+                break
+            arr[i] = min(arr[i], arr[i - coin] + 1)
+
+    return arr[total] if arr[total] != float('inf') else -1
