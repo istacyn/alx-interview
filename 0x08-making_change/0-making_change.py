@@ -18,7 +18,7 @@ def makeChange(coins, total):
     - int: Fewest number of coins needed to meet the total amount.
            or -1 if total cannot be met by any combination of available coins.
     """
-    if total == 0:
+    if total <= 0:
         return 0
 
     arr = [float('inf')] * (total + 1)
