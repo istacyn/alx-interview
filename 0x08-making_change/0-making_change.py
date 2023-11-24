@@ -30,19 +30,17 @@ def makeChange(coins, total):
 
     return arr[total] if arr[total] != float('inf') else -1"""
 
-    if total < 0:  # Handle negative total amounts
-        return -1
-
-    if total == 0:
+    if total <= 0:
         return 0
-
-    # Limiting the range of the inner loop
-    arr = [float('inf')] * (total + 1)
-    arr[0] = 0
-
+    # sort the coins in descending order
+    coins.sort(reverse=True)
+    change = 0
     for coin in coins:
-        for i in range(coin, total + 1):
-            if i - coin >= 0:  # Check if i - coin is a valid index
-                arr[i] = min(arr[i], arr[i - coin] + 1)
-
-    return arr[total] if arr[total] != float('inf') else -1
+        if total <= 0:
+            break
+        temp = total // coin
+        change += temp
+        total -= (temp * coin)
+    if total != 0:
+        return -1
+    return change
