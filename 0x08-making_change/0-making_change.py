@@ -22,19 +22,14 @@ def makeChange(coins, total):
 
     if total <= 0:
         return 0
-    
     coins.sort(reverse=True)
-
     change = 0
-
     for coin in coins:
         if total <= 0:
             break
-        num_coins = total
+        num_coins = total // coin
         change += num_coins
         total -= (num_coins * coin)
-
     if total != 0:
         return -1
-
     return change
