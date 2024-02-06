@@ -1,0 +1,1 @@
+Calculates the perimeter of an island represented by a given grid. The grid contains cells representing land (1) and water (0), and the goal is to determine the total perimeter of the island based on specific rules.
